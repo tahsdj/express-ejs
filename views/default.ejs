@@ -1,0 +1,35 @@
+<!DOCTYPE html>  
+ <html>  
+ <head>  
+  <meta charset="utf-8">  
+  <title>實作EJS</title>
+  <script src='https://code.jquery.com/jquery-3.2.1.js'></script>  
+ </head>  
+ <body>  
+ <h1><%= title %></h1>  
+ <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, quod, praesentium dolor velit culpa cupiditate odio nihil voluptates aliquid eum dolore eligendi quas nobis nam nesciunt odit pariatur minus cum.</p>  
+ <ul>  
+ <% for(var i=0; i<users.length; i++) {%>  
+  <li><%= users[i] %></li>  
+ <% } %>  
+ </ul>
+ <form action="/submit" method = "post">
+ 	<input name = "member1">
+ 	<input name = "member2">
+ 	<button type = "submit">submit</button>	
+ </form>
+ <div class="div">
+ 	<input id = "ajax">
+ 	<button id = "submit">submit</button>
+ </div>
+ <script>
+ 	$('#submit').click(() => {
+ 		let val = $('#ajax').val()
+ 		$.get('/ajax',{name: val},(data) => {
+ 			$('.div').html(data)
+ 		})
+ 	})
+ </script>  
+ </body>  
+ </html>  	
+ 
